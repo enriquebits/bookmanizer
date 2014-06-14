@@ -61,3 +61,6 @@ def init_model(engine):
 # Import your model modules here.
 from pegasus.model.auth import User, Group, Permission
 from pegasus.model.sample import SampleModel
+from pegasus.model.tag import Tag
+from pegasus.model.category import Category
+from pegasus.model.link import Link

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Fallback controller."""
 
-from example.lib.base import BaseController
+from pegasus.lib.base import BaseController
 from tg import abort
 
 __all__ = ['TemplateController']

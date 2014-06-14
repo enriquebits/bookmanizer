@@ -15,7 +15,7 @@ __all__ = ['User', 'Group', 'Permission']
 
 from sqlalchemy import Table, ForeignKey, Column
 from sqlalchemy.types import Unicode, Integer, DateTime
-from sqlalchemy.orm import relation, synonym
+from sqlalchemy.orm import relationship, synonym
 
 from pegasus.model import DeclarativeBase, metadata, DBSession
 
@@ -31,9 +31,23 @@ group_permission_table = Table('tg_group_permission', metadata,
 # This is the association table for the many-to-many relationship between
 # groups and members - this is, the memberships.
 user_group_table = Table('tg_user_group', metadata,
-    Column('user_id', Integer, ForeignKey('tg_user.user_id',
+    Column('id', Integer, ForeignKey('tg_user.id',
         onupdate="CASCADE", ondelete="CASCADE"), primary_key=True),
     Column('group_id', Integer, ForeignKey('tg_group.group_id',
+        onupdate="CASCADE", ondelete="CASCADE"), primary_key=True)
+)
+
+user_category_table = Table('aux_user_category', metadata,
+    Column('user_id', Integer, ForeignKey('tg_user.id',
+        onupdate="CASCADE", ondelete="CASCADE"), primary_key=True),
+    Column('category_id', Integer, ForeignKey('category.id',
+        onupdate="CASCADE", ondelete="CASCADE"), primary_key=True)
+)
+
+user_link_table = Table('aux_user_link', metadata,
+    Column('link_id', Integer, ForeignKey('link.id',
+        onupdate="CASCADE", ondelete="CASCADE"), primary_key=True),
+    Column('user_id', Integer, ForeignKey('tg_user.id',
         onupdate="CASCADE", ondelete="CASCADE"), primary_key=True)
 )
 
@@ -52,7 +66,7 @@ class Group(DeclarativeBase):
     group_name = Column(Unicode(16), unique=True, nullable=False)
     display_name = Column(Unicode(255))
     created = Column(DateTime, default=datetime.now)
-    users = relation('User', secondary=user_group_table, backref='groups')
+    users = relationship('User', secondary=user_group_table, backref='groups')
 
     def __repr__(self):
         return '<Group: name=%s>' % repr(self.group_name)
@@ -69,13 +83,33 @@ class User(DeclarativeBase):
 
     """
     __tablename__ = 'tg_user'
+    __table_args__ = {'mysql_engine': 'InnoDB'}
 
-    user_id = Column(Integer, autoincrement=True, primary_key=True)
+    # Columns { 
+
+    id = Column(Integer, autoincrement=True, primary_key=True)
+    
     user_name = Column(Unicode(16), unique=True, nullable=False)
+    
     email_address = Column(Unicode(255), unique=True, nullable=False)
+    
     display_name = Column(Unicode(255))
+    
     _password = Column('password', Unicode(128))
+    
     created = Column(DateTime, default=datetime.now)
+
+    #}
+
+    # Relations { 
+
+    favourite_links = relationship('Link', secondary=user_link_table)
+
+    interests = relationship('Category', secondary=user_category_table)
+
+    #}
+
+    # Special methods { 
 
     def __repr__(self):
         return '<User: name=%s, email=%s, display=%s>' % (
@@ -83,6 +117,10 @@ class User(DeclarativeBase):
 
     def __unicode__(self):
         return self.display_name or self.user_name
+
+    #}
+
+    # Helpers { 
 
     @property
     def permissions(self):
@@ -147,6 +185,7 @@ class User(DeclarativeBase):
         hash = sha256()
         hash.update((password + self.password[:64]).encode('utf-8'))
         return self.password[64:] == hash.hexdigest()
+    #}
 
 class Permission(DeclarativeBase):
     """
@@ -163,7 +202,7 @@ class Permission(DeclarativeBase):
     permission_name = Column(Unicode(63), unique=True, nullable=False)
     description = Column(Unicode(255))
 
-    groups = relation(Group, secondary=group_permission_table,
+    groups = relationship(Group, secondary=group_permission_table,
                       backref='permissions')
 
     def __repr__(self):
