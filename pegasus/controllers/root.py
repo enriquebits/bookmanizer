@@ -53,6 +53,43 @@ class RootController(BaseController):
         """This method showcases TG's access to the wsgi environment."""
         return dict(page='environ', environment=request.environ)
 
+    @expose('pegasus.templates.login')
+    def login(self, came_from=lurl('/'), **kw):
+        login_counter = request.environ.get('repoze.who.logins', 0)
+
+        if login_counter > 0:
+            flash(_('Wrong credentials'), 'warning')
+
+        return dict(page='login', login_counter=str(login_counter),
+                    came_from=came_from)
+
+    @expose()
+    def post_login(self, came_from=lurl('/')):
+        """
+        Redirect the user to the initially requested page on successful
+        authentication or redirect her back to the login page if login failed.
+
+        """
+        if not request.identity:
+            login_counter = request.environ.get('repoze.who.logins', 0) + 1
+            redirect('/login',
+                params=dict(came_from=came_from, __logins=login_counter))
+        else:
+            userid = request.identity['user']
+            flash(_('Welcome back, %s!') % userid)
+            redirect(came_from)
+
+    @expose()
+    def post_logout(self, came_from=lurl('/')):
+        """
+        Redirect the user to the initially requested page on logout and say
+        goodbye as well.
+
+        """
+        flash(_('We hope to see you soon!'))
+        redirect(came_from)
+
+
     @expose('pegasus.templates.data')
     @expose('json')
     def data(self, **kw):
