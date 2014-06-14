@@ -1,0 +1,116 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+  <!-- SIEMPRE SE INCLUYE EL MASTER, que es en donde están ya referenciados las BIBLIOTECAS (¬¬)
+      de javascript que se vayan a utilizar (i.e. jQuery, librerias custom, etc) y los archivos CSS
+      en donde esten los estilos que vayamos a definir. Además esta página tiene ya la barrita de
+      navegación que se encuentra en el tope de la página.
+    -->
+  <xi:include href="master.html" />
+
+<head>
+  <title>${page}</title>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+          <h1>Esta página es la que está definida para el método form dentro del controlador SampleController </h1>
+          <h4>(Ver los comentarios en este archivo HTML)</h4>
+          <h4>Aquí ya se hace uso del modelo para dar de alta, así que vean los comentarios en model/sample.py</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Los siguientes componentes hacen uso de Genshi y <a href="http://getbootstrap.com/css/#forms">clases de Bootstrap </a> :</h2>
+        <h4>(Ver los comentarios en el controlador)</h4>
+      </div>   
+    </div>
+
+    <br/>
+    
+    <!-- Todos los inputs que estén dentro del tag 'form' se mandarán al controlador cuando se de click en submit -->
+    <!-- Todos los inputs dentro de la forma serán pasados como variables al controlador, el nombre de esta variable
+    será el que este en el valor atributo 'name' de cada elemento -->
+    <!-- el atributo 'action' indica a que parte del controlador se debe mandar la forma y el atributo 'post' indica que
+    tipo de mensaje se está haciendo (post es para mandar información) -->
+    <form role="form" action="${tg.url('post_form')}" method="post">
+      <div class="row">
+        <div class="col-md-12">
+
+          <!-- En este input se usa un atributo HTML llamado required para indicar que no se va a ponder mandar
+              la forma si no se ha llenado este campo -->
+          <div class="row form-group">
+            <div class="col-md-2">Nombre de registro: </div>
+            <div class="col-md-5">
+              <input type="text" class="form-control" name="name" placeholder="Nombre de registro" required="required"/>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-2">Tipo de registro: </div>
+            <div class="col-md-6">
+              <!-- En este select se usan algunos atributos HTML como required para indicar que no se va a ponder mandar
+              la forma si no se ha escogido algo de este select -->
+              <select class="form-control" name="type" >
+                <!-- Se hace un ciclo for para crear una opción por cada valor mandado desde el controlador en la lista de nombre 'options'
+                que se encuentra en el diccionario 'values' -->
+                <py:for each="option in values['options']">                
+                  <option value="${option}">${option}</option>
+                </py:for>
+              </select>
+            </div>              
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-2">Descripcion: </div>
+            <div class="col-md-5">
+              <input type="text" class="form-control" name="description" placeholder="Description" required="required"/>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="checkbox"/> Checkbox de prueba
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Para decirle a HTML que los radio buttons pertenecen al mismo radio group, es necesario que todos tengan el mismo
+          valor en 'name' -->
+          <div class="row form-group">
+            <div class="col-md-12">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" value="radio1" checked="" />
+                  Option one is this and that&mdash;be sure to include why it's great
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" value="radio2" />
+                  Option two can be something else and selecting it will deselect option one
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-default">Submit</button>
+
+        </div>
+      </div>
+    </form>
+
+    
+
+  </div>
+  
+</body>
+</html>

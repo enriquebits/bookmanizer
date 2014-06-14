@@ -1,0 +1,4 @@
+recursive-include pegasus/public *
+include pegasus/public/favicon.ico
+recursive-include pegasus/i18n *
+recursive-include pegasus/templates *

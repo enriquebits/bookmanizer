@@ -1,0 +1,117 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <xi:include href="master.html" />
+
+<head>
+  <title>Welcome to TurboGears 2.3, standing on the shoulders of giants, since 2007</title>
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="jumbotron">
+        <h1>Welcome to TurboGears 2.3</h1>
+        <p>If you see this page it means your installation was successful!</p>
+        <p>TurboGears 2 is rapid web application development toolkit designed to make your life easier.</p>
+        <p>
+          <a class="btn btn-primary btn-lg" href="http://www.turbogears.org" target="_blank">
+            ${h.icon('book')} Learn more
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4 hidden-xs hidden-sm">
+      <a class="btn btn-info btn-sm active" href="http://turbogears.readthedocs.org/en/latest">${h.icon('book')} TG2 Documentation</a> <span class="label label-success">new</span><em> Get Started</em><br/>
+        <br/>
+      <a class="btn btn-info btn-sm active" href="http://turbogears.readthedocs.org/en/latest/cookbook/cookbook.html">${h.icon('book')} TG2 CookBook</a><em> Read the Cookbook</em> <br/>
+        <br/>
+      <a class="btn btn-info btn-sm active" href="http://groups.google.com/group/turbogears">${h.icon('comment')} Join the Mail List</a> <em>for help/discussion</em><br/>
+        <br/>
+      <a class="btn btn-info btn-sm active" href="http://runnable.com/TurboGears">${h.icon('play')} Play on Runnable</a> <em>for basic examples</em><br/>
+        <br/>
+      <a class="btn btn-info btn-sm active" href="http://stackoverflow.com/questions/tagged/turbogears2">${h.icon('search')} Search Stackoverflow</a> <em>for questions</em>
+    </div>
+  </div>
+
+  <!-- INICIAN CAMBIOS -->
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1>PÁGINA RESPONSIVA</h1>
+    </div>    
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      Para hacer las páginas responsivas y que mantengan su proporción en cualquier tipo de pantalla, usamos Bootstrap de Twitter (el cual ya viene integrado), que consiste en clases ya definidas en CSS para que los componentes como botones, inputs, selects, etc, sean responsivos y se vean bonitos jajajaja como el botón que está a la derecha---->
+    </div>
+    <div class="col-md-4">
+      <button type="button" class="btn btn-success btn-lg btn-block" onClick="window.location.href='http://getbootstrap.com/css/'">Ir a la doc de Bootstrap</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>¿Cómo funciona?</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" style="font-size: medium;">
+      <h4>De la misma forma que las interfaces gráficas en Java, los elementos se acomodan en un grid formado por filas (row) y columnas (col). </h4>
+    </div>
+  </div>  
+
+  <br/>
+
+  <div class="row">
+    <div class="col-md-6">
+      Cada fila (div con la clase 'row') se usa como contenedor para las columnas y tiene unos márgenes y paddings ya establecidos para que se vea todavía más bonito! 
+    </div>
+    <div class="col-md-6">
+      Cada fila puede tener hasta 12 columnas y cada columna está formada por una div con la clase 'col-md-X', donde la X representa cuántas columnas de las 12 va a ocupar esta div. En este caso, la fila se dividió en 2, por lo que cada sección debe ocupar 6 columnas resultando en dos divs con la clase 'col-md-6' cada una.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>En la siguiente página hay un ejemplo de un nuevo controlador y una forma de registro en donde se muestra como interactuan los controladores con el modelo y con las vistas:</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <button class="btn btn-warning btn-block" onClick="window.location.href=' ${tg.url('/sample')} '">
+        <h2>Ir a la página del controlador SampleController</h2>
+        Este botón tiene un offset (cols vacías a la izquierda) de 2 y fue hecho con las clases de Bootstrap
+      </button>
+    </div>
+  </div>
+
+  <br/><br/>
+
+  <!-- TERMINAN CAMBIOS -->
+
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Code your data model</h3>
+      <p> Design your data <code>model</code>, Create the database, and Add some bootstrap data.</p>
+    </div>
+
+    <div class="col-md-4">
+      <h3>Design your URL architecture</h3>
+      <p> Decide your URLs, Program your <code>controller</code> methods, Design your
+        <code>templates</code>, and place some static files (CSS and/or Javascript). </p>
+    </div>
+
+    <div class="col-md-4">
+      <h3>Distribute your app</h3>
+      <p> Test your source, Generate project documents, Build a distribution.</p>
+    </div>
+  </div>
+
+  <em class="pull-right small"> Thank you for choosing TurboGears.</em>
+</body>
+</html>
