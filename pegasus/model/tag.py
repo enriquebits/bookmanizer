@@ -9,6 +9,11 @@ from sqlalchemy.types import Integer, Unicode
 
 from pegasus.model import DeclarativeBase, metadata, DBSession
 
+# log imports
+import re
+import logging
+log = logging.getLogger(__name__)
+
 
 class Tag(DeclarativeBase):
     __tablename__ = 'tag'
@@ -51,6 +56,24 @@ class Tag(DeclarativeBase):
     def get_tags_by_name(cls, name):
         name = '%'+name+'%'
         return DBSession.query(cls).filter(cls.name.like(name)).limit(10)
+
+    @classmethod
+    def links_tag_id(cls, tags=None, pag=None):
+        log.debug("Recibe: %s\n", tags)
+        log.debug("Numero de registros: %s\n", pag)
+        lista = []
+        links = []
+        if pag==1:
+            lista = DBSession.query(cls).filter(cls.id.in_(tags)).offset(0).limit(16).all()
+        else:
+            lista = DBSession.query(cls).filter(cls.id.in_(tags)).offset(16*pag).limit(32*pag).all()
+        
+        for t in lista:
+            if len(t.tags_links) < 16-len(links):
+                links.append(t.tags_links)
+            else:
+                break
+        return links
 
     # }
 
