@@ -10,6 +10,7 @@ from tg.i18n import ugettext as _
 
 # project specific imports
 from pegasus.lib.base import BaseController
+from pegasus.lib.misc import getUser
 from pegasus.model import DBSession, metadata
 from pegasus import model
 
@@ -60,9 +61,118 @@ class LinkController(BaseController):
 
     @expose('json')
     def like(self, **kw):
-        link_id = kw.get('link_id', None)
+        log.debug("Recibiendo de like %s", kw)
+        link_id = kw.get('lid', None)
+        is_liked = kw.get('isLiked', None)
         link = model.Link.get_by_id(link_id)
-        if link:
-            link.likes += 1
-            link.is_liked = True
-            model.DBSession.add(like)
+        response = dict()
+        
+        if link: 
+            if int(is_liked) == 1:
+                link.likes += 1
+                link.is_liked = True
+
+                if link.is_disliked:
+                    link.dislikes -= 1
+                    link.is_disliked = None
+                
+                model.DBSession.add(link)
+                model.DBSession.flush()
+                response["liked"] = "true"
+            else:
+                link.likes -= 1
+                link.is_liked = None
+                model.DBSession.add(link)
+                model.DBSession.flush()
+                response["liked"] = "null"
+
+        import json
+        return json.dumps(response)
+
+    @expose('json')
+    def dislike(self, **kw):
+        log.debug("Recibiendo de dislike %s", kw)
+        link_id = kw.get('lid', None)
+        is_disliked = kw.get('isDisliked', None)
+        link = model.Link.get_by_id(link_id)
+        response = dict()
+        
+        if link: 
+            if int(is_disliked) == 1:
+                link.dislikes += 1
+                link.is_disliked = True
+
+                if link.is_liked:
+                    link.flags -= 1
+                    link.is_liked = None
+
+                model.DBSession.add(link)
+                model.DBSession.flush()
+                response["disliked"] = "true"
+            else:
+                link.dislikes -= 1
+                link.is_disliked = None
+                model.DBSession.add(link)
+                model.DBSession.flush()
+                response["disliked"] = "null"
+
+        import json
+        return json.dumps(response)
+
+    @expose('json')
+    def favourite(self, **kw):
+        log.debug("Recibiendo de favourite %s", kw)
+        link_id = kw.get('lid', None)
+        is_favourite = kw.get('isFavourite', None)
+        link = model.Link.get_by_id(link_id)
+        user = getUser(request)
+        response = dict()
+        
+        if link: 
+            if int(is_favourite) == 1:
+                link.flags -= 1
+                link.is_flagged = None
+                model.DBSession.add(link)
+                model.DBSession.flush()
+                user.favourite_links.append(link)
+                model.DBSession.add(user)
+                model.DBSession.flush()
+                response["favourite"] = "true"
+            else:
+                user.favourite_links.remove(link)
+                model.DBSession.add(user)
+                model.DBSession.flush()
+                response["favourite"] = "null"
+
+        import json
+        return json.dumps(response)
+
+    @expose('json')
+    def flag(self, **kw):
+        log.debug("Recibiendo de flag %s", kw)
+        link_id = kw.get('lid', None)
+        is_flagged = kw.get('isFlagged', None)
+        link = model.Link.get_by_id(link_id)
+        user = getUser(request)
+        response = dict()
+        
+        if link: 
+            if int(is_flagged) == 1:
+                link.flags += 1
+                link.is_flagged = True
+                model.DBSession.add(link)
+                model.DBSession.flush()
+                user.favourite_links.remove(link)
+                model.DBSession.add(user)
+                model.DBSession.flush()
+                response["flagged"] = "true"
+            else:
+                link.flags -= 1
+                link.is_flagged = None
+                model.DBSession.add(link)
+                model.DBSession.flush()
+                response["flagged"] = "null"
+
+        import json
+        return json.dumps(response)
+

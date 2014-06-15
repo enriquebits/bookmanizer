@@ -2,9 +2,9 @@
 
 $( document ).ready(function() {
 	$('.slider').fractionSlider({
-		'timeout' : 1500,
-		'speedIn' : 1500, // default in - transition speed
-		'speedOut' : 1000, // default out - transition speed
+		'timeout' : 1000,
+		'speedIn' : 1000, // default in - transition speed
+		'speedOut' : 500, // default out - transition speed
 	});
 
 	// Init Skrollr
