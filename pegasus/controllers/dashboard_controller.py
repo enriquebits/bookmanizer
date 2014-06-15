@@ -4,12 +4,13 @@
 # turbogears imports
 from tg import expose
 
-from tg import redirect, validate, flash
+from tg import redirect, validate, flash, request
 #from tg.i18n import ugettext as _
 #from tg import predicates
 
 # project specific imports
 from pegasus.lib.base import BaseController
+
 
 from pegasus import model
 """ con DBSession se puede acceder a las tablas para hacer consultas, ediciones, altas, bajas, etc """
@@ -26,4 +27,20 @@ class DashboardController(BaseController):
     
     @expose('pegasus.templates.logged_index')
     def index(self):
-        return dict(page='Index de SampleController')
+        user = request.identity['user']
+    	responde = ""
+    	if len(user.interests) == 0:
+    		responde = 'No hay nada'
+    	else:
+    		responde = 'Si tiene categorias'
+    	return dict(values=responde)
+
+    """@expose('pegasus.templates.logged_index')
+    def about(self):
+    	user = request.identity['user']
+    	responde = ""
+    	if len(user.categories) == 0:
+    		responde = 'No hay nada'
+    	else:
+    		responde = 'Si tiene categorias'
+    	return dict(page='Resultado', values=responde)"""
