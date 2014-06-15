@@ -32,10 +32,24 @@
 			    	</div>
 		    		<div id="${'collapse'+str(categorias.id)}" class="panel-collapse collapse">
 		    			<div class="panel-body">
-					    	<py:for each="links in categorias.links">
-					    		<div>${links.url}</div>
-					    		<div>${links.description}</div>
-					    		<div>${links.created_date}</div>
+					    	<py:for each="link in categorias.links">
+					    		<div class="col-md-3">
+						          <div class="panel panel-default results-panel" onClick="goToPage(this)">
+						            <div class="panel-heading">
+						              <h3 id="title" class="panel-title">${link.url}</h3>
+						            </div>
+						            <div class="panel-body" >
+						              <div id="description" class="panel-body-footer"/>
+						            </div>
+						            <div class="panel-footer">
+						              <div style="float:left;" class="fb-share-button" data-href="${link.url}" data-type="button"></div>
+						              <div style="margin-top:0px;margin-left:15px;float:left;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="${link.url}" data-lang="en">Tweet</a></div>              
+						            </div>
+						            <form id="showPage" method="post" action="${tg.url('/link', params=dict(lid=link.id) )}">
+						              <input type="hidden" name="lid" id="url" value="${link.id}"/>
+						            </form>
+						          </div>
+						        </div>
 					    	</py:for>
 				    	</div>
 		    		</div>
@@ -46,5 +60,7 @@
 </div> 
 
 </body>
+
+<script src="${tg.url('/javascript/search_results.js')}"></script>
 
 </html>
