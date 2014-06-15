@@ -32,7 +32,7 @@ class DashboardController(BaseController):
     def index(self):
     	user = request.identity['user']
     	if len(user.categories) == 0:
-    		links = model.Link.get_all(None)
+    		links=[]
     		return dict(resp=links, op=1)
     	else:
     		links = model.Category.categorias_usuario(user.id)

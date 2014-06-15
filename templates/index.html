@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <xi:include href="master.html" />
+
+<head>
+  <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/fractionslider.css')}" />
+  <title>Pegasus</title>
+</head>
+
+<body>  
+
+
+
+  <div class="slider" style="height: 500px;width:100%;">  
+
+    <div class="row">
+      <div class="col-md-3 col-md-offset-8">
+        <div class="panel panel-default" style="z-index:90000;position:absolute;top:100px;left:0;width:100%;">
+          <div class="panel-body">
+            <form role="form" action="${tg.url('/register')}" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username" required="required"/>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="email" required="required"/>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required"/>
+              </div>
+              <input type="submit" class="btn btn-block btn-success" value="Register"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+    <div class="slide" data-in="scrollRight" style="background-image: url('/img/architecture_slide.jpg');"/>
+    <div class="slide" data-in="slideBottom" style="background-image: url('/img/math_slide.jpg');"/>
+  </div>
+
+  <section id="slide-1" class="homeSlide">
+    <div class="bcg" style="background: #f9f5e4;">
+      <div class="hsContainer">
+          <div class="hsContent" data-center="bottom: 200px; opacity: 1"
+                data-top="bottom: 1200px; opacity: 0"
+                data-anchor-target="#slide-1 p">
+            <br/><br/><br/>
+            <div class="row">
+              <div class="col-md-8" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+              </div>
+
+              <div class="col-md-4">
+                <div class="circle bcg" style="background-image: url('/img/quantitative.jpg');"
+                  data-center="background-position: 50% 0px;"
+                  data-top-bottom="background-position: 50% -400px;"
+                  data-anchor-target="#slide-1">
+
+                </div>
+
+              </div>
+            </div>
+            <br/><br/><br/>
+
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="slide-2" class="homeSlide">
+    <div class="bcg" style="background-image: url('/img/parallax_1.jpg');"
+      data-center="background-position: 50% 0px;"
+      data-top-bottom="background-position: 50% -250px;"
+      data-anchor-target="#slide-2">
+
+      <div class="hsContainer">
+          <div class="hsContent" data-center="bottom: 200px; opacity: 1"
+                data-top="bottom: 1200px; opacity: 0"
+                data-anchor-target="#slide-2 h2">
+            <br/><br/><br/>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-5">
+                <h2>bla bla bla</h2>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br/><br/><br/>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+</body>
+
+<script src="${tg.url('/javascript/jquery.fractionslider.min.js')}" />
+<script src="${tg.url('/javascript/skrollr.min.js')}" />
+<script src="${tg.url('/javascript/landpage.js')}" />
+
+</html>
