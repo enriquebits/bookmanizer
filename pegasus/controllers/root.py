@@ -5,6 +5,7 @@ from tg import expose, flash, require, url, lurl, request, redirect, tmpl_contex
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 
 from pegasus.lib.base import BaseController
+from pegasus.lib.misc import forceUser
 from pegasus.controllers.error import ErrorController
 
 """ TUTORIAL: TODOS los controladores nuevos tienen que importarse aquí con la siguiente sintaxis:
@@ -89,6 +90,39 @@ class RootController(BaseController):
         flash(_('We hope to see you soon!'))
         redirect(came_from)
 
+    @expose()
+    def register(self, **kw):
+        """
+        User register
+        """
+        if request.identity:
+            redirect('/')
+
+        email_address = kw.get('email_address', None)
+        user = model.User.by_email_address(email_address)
+
+        """ Adding new user """
+        user = model.User()
+        user.password = kw.get('password', None)
+        user.user_name = kw.get('user_name', None)
+        model.DBSession.add(user)
+
+        # Persisting
+        from sqlalchemy.exc import IntegrityError
+        try:
+            model.DBSession.flush()
+            forceUser(user.user_name)
+            flash(_(u'Bienvenido %s, su cuenta ha sido confirmada con éxito' % user.user_name), 'alert alert-success')
+            redirect('/')
+        except IntegrityError as e:
+            log.debug('Error:', e)
+            model.DBSession.rollback()
+            if e.orig[0] == 1062: 
+                # User register already exits
+                redirect('/login')
+                flash(_('Parece que ya tienes cuenta'))
+            else:
+                raise  
 
     @expose('pegasus.templates.data')
     @expose('json')

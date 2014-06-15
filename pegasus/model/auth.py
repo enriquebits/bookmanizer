@@ -14,7 +14,7 @@ from hashlib import sha256
 __all__ = ['User', 'Group', 'Permission']
 
 from sqlalchemy import Table, ForeignKey, Column
-from sqlalchemy.types import Unicode, Integer, DateTime
+from sqlalchemy.types import Unicode, Integer, DateTime, Boolean
 from sqlalchemy.orm import relationship, synonym
 
 from pegasus.model import DeclarativeBase, metadata, DBSession
@@ -98,6 +98,8 @@ class User(DeclarativeBase):
     _password = Column('password', Unicode(128))
     
     created = Column(DateTime, default=datetime.now)
+
+    is_confirmed = Column(Boolean, nullable=True)
 
     #}
 
