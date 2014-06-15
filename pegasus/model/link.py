@@ -22,7 +22,7 @@ class Link(DeclarativeBase):
     
     #{ Columns
     
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
 
     category_id = Column(Integer, ForeignKey('category.id'))
 

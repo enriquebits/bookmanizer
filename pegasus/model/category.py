@@ -15,7 +15,7 @@ class Category(DeclarativeBase):
     
     #{ Columns
     
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
 
     user_id = Column(Integer, ForeignKey('tg_user.id'))
 

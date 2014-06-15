@@ -9,6 +9,7 @@ from pegasus.lib.base import BaseController
 from pegasus.lib.misc import forceUser
 from pegasus.controllers.error import ErrorController
 from pegasus.controllers.dashboard_controller import DashboardController
+from pegasus.controllers.link_controller import LinkController
 
 import logging
 log = logging.getLogger(__name__)
@@ -41,6 +42,7 @@ class RootController(BaseController):
     en este caso para acceder a las páginas del controlador SampleController se escribirá en la URL: localhost:XXXX/sample """
     sample = SampleController()
     dashboard = DashboardController()
+    link = LinkController()
 
     def _before(self, *args, **kw):
         tmpl_context.project_name = "example"
