@@ -11,7 +11,23 @@
 </head>
 
 <body>
+<script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '{757403827645435}',
+        xfbml      : true,
+        version    : 'v2.0'
+      });
+    };
 
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
 <div>
 	<div py:choose="">
 		<div py:when="len(resp) == 0">
@@ -62,5 +78,5 @@
 </body>
 
 <script src="${tg.url('/javascript/search_results.js')}"></script>
-
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </html>
