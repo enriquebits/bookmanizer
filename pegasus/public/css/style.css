@@ -50,3 +50,19 @@ iframe { display:block; width:100%; border:none; }
   width: 350px;
   height: 350px; 
 }
+
+.results-panel .panel-body{
+  height:200px;
+  background-size:cover;
+  background-repeat: no-repeat;
+  padding: 0px;
+}
+
+.results-panel .panel-body-footer {
+  height: 45px;
+  margin-top: 155px;
+  position: relative;
+  color: #ffffff;
+  background: rgba(0,0,0,0.5);
+  padding: 5px;
+}

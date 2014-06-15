@@ -6,8 +6,10 @@ import logging
 from tg import config
 from pegasus import model
 import transaction
+import random
 
 def categories():
+    manager = model.User.by_user_name("manager")
     categories = [
         (1, u"Cocina"),
         (2, u"Artes"),
@@ -24,28 +26,50 @@ def categories():
         category = model.Category()
         category.id = c[0]
         category.name = c[1]
+        category.user_id = manager.id
         model.DBSession.add(category)
 
 def links():
-    manager = model.User.by_user_name("manager")
     links = [
         # url, category_id, likes, dislikes, flags
-        ("http://www.muylinux.com/", 5, 2, 0, 0),
-        ("http://openlibrary.org/", 4, 2, 0, 0),
-        ("http://buscaebooks.blogspot.mx/", 4, 2, 0, 0),
-        ("http://bitelia.com/", 9, 2, 0, 0),
-        ("http://www.bignerdranch.com/index", 6, 2, 0, 0)
+        (1, "http://www.muylinux.com/", 5, 2, 0, 0),
+        (2, "http://openlibrary.org/", 4, 2, 0, 0),
+        (3, "http://buscaebooks.blogspot.mx/", 4, 2, 0, 0),
+        (4, "http://bitelia.com/", 9, 2, 0, 0),
+        (5, "http://www.bignerdranch.com/index", 6, 2, 0, 0)
     ]
+
+    tags_db = model.Tag.get_all()
 
     for l in links:
         link = model.Link()
-        link.url = l[0]
-        link.category_id = l[1]
-        link.likes = l[2]
-        link.dislikes = l[3]
-        link.flags = l[4]
-        link.user_id = manager.id
+        link.id = l[0]
+        link.url = l[1]
+        link.category_id = l[2]
+        link.likes = l[3]
+        link.dislikes = l[4]
+        link.flags = l[5]
+        tags = random.sample(tags_db, 2)
+        link.tags.extend(tags)
         model.DBSession.add(link)
+
+def tags():
+    tags = [
+        (1, u"Tecnología"),
+        (2, u"Linux"),
+        (3, u"Libros"),
+        (4, u"E-books"),
+        (5, u"Tecnología"),
+        (6, u"Gadgets"),
+        (7, u"Nerd"),
+        (8, u"Software")
+    ]
+
+    for t in tags:
+        tag = model.Tag()
+        tag.id = t[0]
+        tag.name = t[1]
+        model.DBSession.add(tag)
 
 def bootstrap(command, conf, vars):
     """Place any commands to setup pegasus here"""
@@ -96,6 +120,14 @@ def bootstrap(command, conf, vars):
     transaction.begin()
     # categories
     categories()
+    # tags
+    tags()
+
+    model.DBSession.flush()
+
+    transaction.commit()
+
+    transaction.begin()
     # links
     links()
 

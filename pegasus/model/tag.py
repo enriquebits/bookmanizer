@@ -47,6 +47,11 @@ class Tag(DeclarativeBase):
     def get_all(cls):
     	return DBSession.query(cls).order_by(cls.name).all()
 
+    @classmethod
+    def get_tags_by_name(cls, name):
+        name = '%'+name+'%'
+        return DBSession.query(cls).filter(cls.name.like(name)).limit(10)
+
     # }
 
 
