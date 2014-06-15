@@ -15,7 +15,7 @@ class Category(DeclarativeBase):
     
     #{ Columns
     
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
 
     name = Column(Unicode(64))
     
