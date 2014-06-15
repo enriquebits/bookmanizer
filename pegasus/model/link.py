@@ -45,6 +45,7 @@ class Link(DeclarativeBase):
     # Relations { 
 
     tags = relationship('Tag', secondary=link_tag_table)
+    category = relationship('Category', backref='links')
 
     #}
 
@@ -73,6 +74,10 @@ class Link(DeclarativeBase):
         return DBSession.query(cls).order_by(cls.url).all()
 
     # }
+
+    @classmethod
+    def links_usuario(cls, id):
+            return DBSession.query(cls).filter(cls.id==id).all()
 
 
         
