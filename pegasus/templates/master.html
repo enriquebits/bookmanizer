@@ -86,7 +86,7 @@
     <p>Copyright &copy; ${getattr(tmpl_context, 'project_name', 'Pegasus')} ${h.current_year()}</p>
   </footer>
 
-  <footer py:if="not request.identity" >
+  <footer py:if="not request.identity and not page == 'login' " >
     <div class="row" style="background: #000000;">
       <br/>
       <div class="row">

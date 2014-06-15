@@ -9,6 +9,7 @@ from pegasus.lib.base import BaseController
 from pegasus.lib.misc import forceUser
 from pegasus.controllers.error import ErrorController
 from pegasus.controllers.dashboard_controller import DashboardController
+from pegasus.controllers.admin_controller import AdminController
 from pegasus.controllers.link_controller import LinkController
 
 import logging
@@ -43,6 +44,7 @@ class RootController(BaseController):
     sample = SampleController()
     dashboard = DashboardController()
     link = LinkController()
+    admin = AdminController()
 
     def _before(self, *args, **kw):
         tmpl_context.project_name = "Pegasus"
