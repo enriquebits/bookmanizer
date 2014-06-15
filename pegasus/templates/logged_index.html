@@ -4,6 +4,7 @@
 
   <xi:include href="master.html" />
 
+
 <head>
   <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/fractionslider.css')}" />
   <title>Pegasus</title>
@@ -19,23 +20,27 @@
 				<input type="submit" value="Agregar"></input>
 			</form>
 		</div>
-		<div py:otherwise="">
-			<div py:choose="">
-				<div py:when="op == 2">
-					<py:for each="categorias in resp">
-				    	<div>
-				    	${categorias.name}
-				    		<div>
-						    	<py:for each="links in categorias.links">
-						    		<div>${links.url}</div>
-						    		<div>${links.description}</div>
-						    		<div>${links.created_date}</div>
-						    	</py:for>
-				    		</div>
+		<div class="panel-group" id="accordion" py:otherwise="">
+			<py:for each="categorias in resp">
+		    	<div class="panel panel-default">
+			    	<div class="panel-heading">
+			    		<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="${'#collapse'+str(categorias.id)}">
+			    				${categorias.name}
+			    			</a>
+			    		</h4>
+			    	</div>
+		    		<div id="${'collapse'+str(categorias.id)}" class="panel-collapse collapse">
+		    			<div class="panel-body">
+					    	<py:for each="links in categorias.links">
+					    		<div>${links.url}</div>
+					    		<div>${links.description}</div>
+					    		<div>${links.created_date}</div>
+					    	</py:for>
 				    	</div>
-		  			</py:for>
-				</div>
-			</div>
+		    		</div>
+		    	</div>
+		    </py:for>
 		</div>
 	</div> 
 </div> 
