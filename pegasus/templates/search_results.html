@@ -19,18 +19,19 @@
 
       <py:for each="link in links">
         <div class="col-md-3">
-          <div class="panel panel-default results-panel">
+          <div class="panel panel-default results-panel" onClick="goToPage(this)">
             <div class="panel-heading">
               <h3 id="title" class="panel-title">${link.url}</h3>
             </div>
             <div class="panel-body" >
-              <div id="description" class="panel-body-footer">
-                
-              </div>
+              <div id="description" class="panel-body-footer"/>
             </div>
             <div class="panel-footer">
               Panel footer
             </div>
+            <form id="showPage" method="post" action="${tg.url('/showpage')}">
+              <input type="hidden" name="url" id="url" value="${link.url}"/>
+            </form>
           </div>
         </div>
       </py:for>
@@ -38,7 +39,7 @@
     </div>
 
     <div class="row">
-      <button type="button" class="btn btn-success btn-block" onClick="loadMore()">Load More</button>      
+      <button id="loadMore" type="button" class="btn btn-success btn-block" onClick="loadMore()">Load More</button>      
     </div>
 
   </div>

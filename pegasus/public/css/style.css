@@ -66,3 +66,18 @@ iframe { display:block; width:100%; border:none; }
   background: rgba(0,0,0,0.5);
   padding: 5px;
 }
+
+.results-panel .panel-heading {
+  height: 55px;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.crown {
+  vertical-align: middle;
+  margin-left: 34%; 
+}
