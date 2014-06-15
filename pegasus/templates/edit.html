@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <xi:include href="master.html" />
+
+
+<head>
+  <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/fractionslider.css')}" />
+  <title>Pegasus</title>
+</head>
+
+<body>
+
+${page}
+<div>Nombre de usuario: ${usuario.user_name}</div>
+
+<div>Email: ${usuario.email_address}</div>
+
+<div>Nombre: ${usuario.display_name}</div>
+
+<form action="${tg.url('cambia_pass')}">
+	<div>Contraseña anterior: <input class="form-control" type="password" name="old_pass"/></div>
+	<div>Contraseña nueva: <input class="form-control" type="password" name="new_pass"/></div>
+	<input type="submit"/>
+</form>
+
+<form action="${tg.url('cambia_nombre')}">
+	<div>Nombre: <input class="form-control" type="text" name="nombre"/></div>
+	<div>Apellido: <input class="form-control" type="text" name="apellido"/></div>
+	<input type="submit"/>
+</form>
+
+</body>
+
+
+</html>
