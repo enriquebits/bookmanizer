@@ -49,7 +49,7 @@ class DashboardController(BaseController):
         #log.debug("Links: %s\n", tags.tags_links)
         #query = kw.get()
         # do results
-        return dict(page='Resultados', links=links, tags=kw['tags'])
+        return dict(page='Resultados', links=links[0], tags=kw['tags'])
 
     @expose('json')
     def search_ajax(self, **kw):
