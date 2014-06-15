@@ -38,27 +38,14 @@
         <li py:if="not request.identity" class="${('', 'active')[value_of('page') == 'about']}"><a href="${tg.url('/about')}">About</a></li>
 
         <li py:if="request.identity">
-<<<<<<< HEAD
-<<<<<<< HEAD:pegasus/pegasus/templates/master.html
-          <input type="text" id="query" style="margin-top:12px;width:300%;" />
-=======
+
           <input multiple="multiple" type="text" id="query" style="margin-top:12px;width:100%;" />
->>>>>>> aa778f4dc50db3bec0d2ceb6944dfb4c3112b5c8:pegasus/templates/master.html
-=======
-          <input multiple="multiple" type="text" id="query" style="margin-top:12px;width:100%;" />
->>>>>>> aa778f4dc50db3bec0d2ceb6944dfb4c3112b5c8
+
         </li>
       </ul>
       
-<<<<<<< HEAD
-<<<<<<< HEAD:pegasus/pegasus/templates/master.html
-      <button py:if="request.identity" type="button" class="btn btn-default" style="margin-left: 20%; margin-top:9px;" onClick="doSearch()">Search</button>
-=======
+
       <button py:if="request.identity" type="button" class="btn btn-default" style="margin-top:12px;" onClick="doSearch()">Search</button>
->>>>>>> aa778f4dc50db3bec0d2ceb6944dfb4c3112b5c8:pegasus/templates/master.html
-=======
-      <button py:if="request.identity" type="button" class="btn btn-default" style="margin-top:12px;" onClick="doSearch()">Search</button>
->>>>>>> aa778f4dc50db3bec0d2ceb6944dfb4c3112b5c8
 
       <form py:if="request.identity" id="search_form" action="${tg.url('/dashboard/search')} ">
         <input type="hidden" name="tags" id="tags"/>
