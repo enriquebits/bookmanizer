@@ -24,6 +24,7 @@
 <body>
   <div class="link-iframe" py:with="link=h.link(request['GET'].get('lid', ''))">
     ${controlsLink()}
+    <input type="hidden" id="lid" value="${link.id}"/>
     <iframe id="glu" src="${link}" width="100%" height="100%">
       <p>Your browser does not support iframes.</p>
     </iframe>

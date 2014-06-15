@@ -7,10 +7,10 @@
            <div class="slidedown collapse">
               <div class="container">
                  <div class="link-controls pull-left">
-                    <a href="#" onclick="like(this)"><i id="like" class="fa fa-thumbs-o-up" style="font-size: 30px;"></i></a>
-                    <a href="#" onclick="dislike(this)"><i id="dislike" class="fa fa-thumbs-o-down" style="font-size: 30px;"></i></a>
-                    <a href="#" onclick="favourite(this)"><i id="favourite" class="fa fa-star-o" style="font-size: 30px;"></i></a>
-                    <a href="#" onclick="flag(this)"><i id="flag" class="fa fa-flag-o" style="font-size: 30px;"></i></a>
+                    <a href="#" onclick="like(this)"><i id="like" class="${('fa fa-thumbs-o-up', 'fa fa-thumbs-o-up liked')[link.is_liked==True]}" style="font-size: 30px;"></i></a>
+                    <a href="#" onclick="dislike(this)"><i id="dislike" class="${('fa fa-thumbs-o-down', 'fa fa-thumbs-o-down disliked')[link.is_disliked==True]}" style="font-size: 30px;"></i></a>
+                    <a href="#" onclick="favourite(this)"><i id="favourite" class="${('fa fa-star-o', 'fa fa-star-o favourite')[link in h.favourite_links()]}" style="font-size: 30px;"></i></a>
+                    <a href="#" onclick="flag(this)"><i id="flag" class="${('fa fa-flag-o', 'fa fa-flag-o flagged')[link.is_flagged==True]}" style="font-size: 30px;"></i></a>
                  </div>
                  <div class="pull-right">
                     <ul class="social pull-left">

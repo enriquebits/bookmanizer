@@ -3,6 +3,7 @@
 import tg
 import logging
 log = logging.getLogger(__name__)
+from pegasus import model
     
 def getUser(request):
     """ 
@@ -10,7 +11,6 @@ def getUser(request):
     @param session request
     @return user or None
     """
-    from autogenio import model
     if request.identity:
         identity = request.environ.get('repoze.who.identity')
         #log.debug("identity: %s", identity['repoze.who.userid'])

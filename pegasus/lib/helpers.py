@@ -20,18 +20,8 @@ def icon(icon_name):
 def link(link_id):
 	return model.Link.get_by_id(link_id)
 
-def like_link(link):
-	link.likes += 1
-	model.DBSession.add(link)
-	model.DBSession.flush()
-
-def dislike_link(link):
-	link.dislike += 1
-	model.DBSession.add(link)
-	model.DBSession.flush()
-
-def favourite_link(link):
+def favourite_links():
 	user = getUser(request)
-	user.favourites.append(link)
-	model.DBSession.add(user)
-	model.DBSession.flush()
+	if user:
+		return user.favourite_links
+	return None
