@@ -9,10 +9,22 @@
   <title>Pegasus</title>
 </head>
 
-<body>  
+<body>
 
-
-  
+<div>
+    <py:for each="categorias in cats">
+    	<div>
+    	${categorias.name}
+    		<!--<div style="display:none">-->
+	    	<py:for each="links in categorias.links">
+	    		<div>${links.url}</div>
+	    		<div>${links.description}</div>
+	    		<div>${links.created_date}</div>
+	    	</py:for>
+    		<!--</div>-->
+    	</div>
+  	</py:for>
+ </div>  
 
 </body>
 
