@@ -38,9 +38,7 @@
         <li py:if="not request.identity" class="${('', 'active')[value_of('page') == 'about']}"><a href="${tg.url('/about')}">About</a></li>
 
         <li py:if="request.identity">
-
-          <input multiple="multiple" type="text" id="query" style="margin-top:12px;width:100%;" />
-
+          <input multiple="multiple" type="text" id="query" style="margin-top:12px;" />
         </li>
       </ul>
       
