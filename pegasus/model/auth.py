@@ -37,13 +37,6 @@ user_group_table = Table('tg_user_group', metadata,
         onupdate="CASCADE", ondelete="CASCADE"), primary_key=True)
 )
 
-user_category_table = Table('aux_user_category', metadata,
-    Column('user_id', Integer, ForeignKey('tg_user.id',
-        onupdate="CASCADE", ondelete="CASCADE"), primary_key=True),
-    Column('category_id', Integer, ForeignKey('category.id',
-        onupdate="CASCADE", ondelete="CASCADE"), primary_key=True)
-)
-
 user_link_table = Table('aux_user_link', metadata,
     Column('link_id', Integer, ForeignKey('link.id',
         onupdate="CASCADE", ondelete="CASCADE"), primary_key=True),
@@ -106,8 +99,6 @@ class User(DeclarativeBase):
     # Relations { 
 
     favourite_links = relationship('Link', secondary=user_link_table)
-
-    interests = relationship('Category', secondary=user_category_table)
 
     #}
 

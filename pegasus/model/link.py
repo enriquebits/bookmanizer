@@ -22,7 +22,7 @@ class Link(DeclarativeBase):
     
     #{ Columns
     
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
 
     category_id = Column(Integer, ForeignKey('category.id'))
 
@@ -45,6 +45,7 @@ class Link(DeclarativeBase):
     # Relations { 
 
     tags = relationship('Tag', secondary=link_tag_table)
+    category = relationship('Category', backref='links')
 
     #}
 
@@ -69,10 +70,14 @@ class Link(DeclarativeBase):
         return DBSession.query(cls).filter(cls.id==id).first()
 
     @classmethod
-    def get_all(cls):
+    def get_all(cls, category_id=None):
+        if category_id:
+            return DBSession.query(cls).filter(cls.category_id==category_id)\
+                        .order_by(cls.created_date).all()
         return DBSession.query(cls).order_by(cls.url).all()
 
     # }
+
 
 
         

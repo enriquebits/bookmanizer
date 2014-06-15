@@ -56,7 +56,7 @@
 
   
   <!-- Flash messages -->
-  <py:with vars="flash=tg.flash_obj.render('flash', use_js=False)">
+  <py:with vars="flash=tg.flash_obj.render('flash', use_js=False); link=h.link(request['GET'].get('lid', ''))">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div py:if="flash" py:replace="Markup(flash)" />
