@@ -112,7 +112,7 @@ class RootController(BaseController):
         try:
             model.DBSession.flush()
             forceUser(user.user_name)
-            flash(_(u'Bienvenido %s, su cuenta ha sido confirmada con éxito' % user.user_name), 'alert alert-success')
+            # flash(_(u'Bienvenido %s, su cuenta ha sido confirmada con éxito' % user.user_name), 'alert alert-success')
             redirect('/')
         except IntegrityError as e:
             log.debug('Error:', e)

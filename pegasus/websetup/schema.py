@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Setup the pegasus application"""
 from __future__ import print_function
-
+import sys
 import logging
 from tg import config
 import transaction
@@ -12,8 +12,13 @@ def setup_schema(command, conf, vars):
 
     # <websetup.websetup.schema.before.model.import>
     from pegasus import model
-    # <websetup.websetup.schema.after.model.import>
-
+    if 'nose' not in sys.modules:
+        confirm = raw_input("Destroy actual database? ([yes]/no) ")
+        if confirm == "yes" or confirm == "":
+            print("Destroying previous databases")
+            model.metadata.drop_all(bind=config['pylons.app_globals'].sa_engine)
+        else:
+            print("Keeping database...")
     
     # <websetup.websetup.schema.before.metadata.create_all>
     print("Creating tables")

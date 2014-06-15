@@ -5,113 +5,123 @@
   <xi:include href="master.html" />
 
 <head>
-  <title>Welcome to TurboGears 2.3, standing on the shoulders of giants, since 2007</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/fractionslider.css')}" />
+  <title>Pegasus</title>
 </head>
 
-<body>
-  <div class="row">
-    <div class="col-md-8">
-      <div class="jumbotron">
-        <h1>Welcome to TurboGears 2.3</h1>
-        <p>If you see this page it means your installation was successful!</p>
-        <p>TurboGears 2 is rapid web application development toolkit designed to make your life easier.</p>
-        <p>
-          <a class="btn btn-primary btn-lg" href="http://www.turbogears.org" target="_blank">
-            ${h.icon('book')} Learn more
-          </a>
-        </p>
+<body>  
+
+
+
+  <div class="slider" style="height: 500px;width:100%;">  
+
+    <div class="row">
+      <div class="col-md-3 col-md-offset-8">
+        <div class="panel panel-default" style="z-index:90000;position:absolute;top:100px;left:0;width:100%;">
+          <div class="panel-body">
+            <form role="form" action="${tg.url('register')}" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control" id="username" placeholder="Username" required="required"/>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="email" required="required"/>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="password" placeholder="Password" required="required"/>
+              </div>
+              <button type="submit" class="btn btn-block btn-success">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+    <div class="slide" data-in="scrollRight" style="background-image: url('/img/architecture_slide.jpg');"/>
+    <div class="slide" data-in="slideBottom" style="background-image: url('/img/math_slide.jpg');"/>
+  </div>
+
+  <section id="slide-1" class="homeSlide">
+    <div class="bcg" style="background: #f9f5e4;">
+      <div class="hsContainer">
+          <div class="hsContent" data-center="bottom: 200px; opacity: 1"
+                data-top="bottom: 1200px; opacity: 0"
+                data-anchor-target="#slide-1 p">
+            <br/><br/><br/>
+            <div class="row">
+              <div class="col-md-8" >
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+              </div>
+
+              <div class="col-md-4">
+                <div class="circle bcg" style="background-image: url('/img/quantitative.jpg');"
+                  data-center="background-position: 50% 0px;"
+                  data-top-bottom="background-position: 50% -400px;"
+                  data-anchor-target="#slide-1">
+
+                </div>
+
+              </div>
+            </div>
+            <br/><br/><br/>
+
+          </div>
       </div>
     </div>
-    <div class="col-md-4 hidden-xs hidden-sm">
-      <a class="btn btn-info btn-sm active" href="http://turbogears.readthedocs.org/en/latest">${h.icon('book')} TG2 Documentation</a> <span class="label label-success">new</span><em> Get Started</em><br/>
-        <br/>
-      <a class="btn btn-info btn-sm active" href="http://turbogears.readthedocs.org/en/latest/cookbook/cookbook.html">${h.icon('book')} TG2 CookBook</a><em> Read the Cookbook</em> <br/>
-        <br/>
-      <a class="btn btn-info btn-sm active" href="http://groups.google.com/group/turbogears">${h.icon('comment')} Join the Mail List</a> <em>for help/discussion</em><br/>
-        <br/>
-      <a class="btn btn-info btn-sm active" href="http://runnable.com/TurboGears">${h.icon('play')} Play on Runnable</a> <em>for basic examples</em><br/>
-        <br/>
-      <a class="btn btn-info btn-sm active" href="http://stackoverflow.com/questions/tagged/turbogears2">${h.icon('search')} Search Stackoverflow</a> <em>for questions</em>
+  </section>
+
+  <section id="slide-2" class="homeSlide">
+    <div class="bcg" style="background-image: url('/img/parallax_1.jpg');"
+      data-center="background-position: 50% 0px;"
+      data-top-bottom="background-position: 50% -250px;"
+      data-anchor-target="#slide-2">
+
+      <div class="hsContainer">
+          <div class="hsContent" data-center="bottom: 200px; opacity: 1"
+                data-top="bottom: 1200px; opacity: 0"
+                data-anchor-target="#slide-2 h2">
+            <br/><br/><br/>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-5">
+                <h2>bla bla bla</h2>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br/><br/><br/>
+          </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- INICIAN CAMBIOS -->
+  
 
-  <div class="row">
-    <div class="col-md-12">
-      <h1>PÁGINA RESPONSIVA</h1>
-    </div>    
-  </div>
-
-  <div class="row">
-    <div class="col-md-8">
-      Para hacer las páginas responsivas y que mantengan su proporción en cualquier tipo de pantalla, usamos Bootstrap de Twitter (el cual ya viene integrado), que consiste en clases ya definidas en CSS para que los componentes como botones, inputs, selects, etc, sean responsivos y se vean bonitos jajajaja como el botón que está a la derecha---->
-    </div>
-    <div class="col-md-4">
-      <button type="button" class="btn btn-success btn-lg btn-block" onClick="window.location.href='http://getbootstrap.com/css/'">Ir a la doc de Bootstrap</button>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <h2>¿Cómo funciona?</h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12" style="font-size: medium;">
-      <h4>De la misma forma que las interfaces gráficas en Java, los elementos se acomodan en un grid formado por filas (row) y columnas (col). </h4>
-    </div>
-  </div>  
-
-  <br/>
-
-  <div class="row">
-    <div class="col-md-6">
-      Cada fila (div con la clase 'row') se usa como contenedor para las columnas y tiene unos márgenes y paddings ya establecidos para que se vea todavía más bonito! 
-    </div>
-    <div class="col-md-6">
-      Cada fila puede tener hasta 12 columnas y cada columna está formada por una div con la clase 'col-md-X', donde la X representa cuántas columnas de las 12 va a ocupar esta div. En este caso, la fila se dividió en 2, por lo que cada sección debe ocupar 6 columnas resultando en dos divs con la clase 'col-md-6' cada una.
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <h2>En la siguiente página hay un ejemplo de un nuevo controlador y una forma de registro en donde se muestra como interactuan los controladores con el modelo y con las vistas:</h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <button class="btn btn-warning btn-block" onClick="window.location.href=' ${tg.url('/sample')} '">
-        <h2>Ir a la página del controlador SampleController</h2>
-        Este botón tiene un offset (cols vacías a la izquierda) de 2 y fue hecho con las clases de Bootstrap
-      </button>
-    </div>
-  </div>
-
-  <br/><br/>
-
-  <!-- TERMINAN CAMBIOS -->
-
-  <div class="row">
-    <div class="col-md-4">
-      <h3>Code your data model</h3>
-      <p> Design your data <code>model</code>, Create the database, and Add some bootstrap data.</p>
-    </div>
-
-    <div class="col-md-4">
-      <h3>Design your URL architecture</h3>
-      <p> Decide your URLs, Program your <code>controller</code> methods, Design your
-        <code>templates</code>, and place some static files (CSS and/or Javascript). </p>
-    </div>
-
-    <div class="col-md-4">
-      <h3>Distribute your app</h3>
-      <p> Test your source, Generate project documents, Build a distribution.</p>
-    </div>
-  </div>
-
-  <em class="pull-right small"> Thank you for choosing TurboGears.</em>
 </body>
+
+<script src="${tg.url('/javascript/jquery.fractionslider.min.js')}" />
+<script src="${tg.url('/javascript/skrollr.min.js')}" />
+<script src="${tg.url('/javascript/landpage.js')}" />
+
 </html>

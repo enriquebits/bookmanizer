@@ -40,3 +40,9 @@
     margin-bottom: 0;
     color: #555;
 }
+
+.circle {
+  border-radius: 50%;
+  width: 350px;
+  height: 350px; 
+}
