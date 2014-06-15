@@ -3,11 +3,15 @@
 from datetime import datetime
 from sqlalchemy import *
 from sqlalchemy.orm import mapper, relationship
-from sqlalchemy import Table, ForeignKey, Column
+from sqlalchemy import Table, ForeignKey, Column, or_
 from sqlalchemy.types import Integer, Unicode, DateTime
 #from sqlalchemy.orm import relation, backref
 
 from pegasus.model import DeclarativeBase, metadata, DBSession
+
+import re
+import logging
+log = logging.getLogger(__name__)
 
 link_tag_table = Table('aux_link_tag', metadata,
     Column('link_id', Integer, ForeignKey('link.id',
@@ -75,6 +79,11 @@ class Link(DeclarativeBase):
             return DBSession.query(cls).filter(cls.category_id==category_id)\
                         .order_by(cls.created_date).all()
         return DBSession.query(cls).order_by(cls.url).all()
+
+    @classmethod
+    def links_id(cls, links=None):
+        log.debug("Recibe: %s", links)
+        return DBSession.query(cls).filter(cls.id.in_(links)).limit(16).all()
 
     # }
 

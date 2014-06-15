@@ -42,9 +42,13 @@ class DashboardController(BaseController):
     def search(self, **kw):
         results = []
         log.debug("Recibiendo para results: %s \n", kw)
+        results = map(int, kw['tags'].split(','))
+        log.debug("Indices: %s\n", results)
+        links = model.Link.links_id(results)
+        log.debug("Links: %s\n", links)
         #query = kw.get()
         # do results
-        return dict(page='Resultados')
+        return dict(page='Resultados', links=links, tags=kw['tags'])
 
     @expose('json')
     def search_ajax(self, **kw):
