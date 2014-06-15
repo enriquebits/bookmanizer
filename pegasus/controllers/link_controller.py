@@ -21,5 +21,5 @@ class LinkController(BaseController):
     allow_only = predicates.not_anonymous(msg='El usuario debe de estar autentificado')
     
     @expose('pegasus.templates.link')
-    def index(self):
+    def index(self, **kw):
         return dict(page='Index de LinkController')

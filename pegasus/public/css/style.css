@@ -1,7 +1,7 @@
 /* TurboGears flash bootstrap look */
-html, body, iframe { margin:0; padding:0; height:100%; }
+.link-iframe html, body, div, iframe { margin:0; padding:0; height:100%; }
 
-iframe { display:block; width:100%; border:none; }
+.link-iframe iframe { display:block; width:100%; border:none; }
 
 #flash > div {
   padding: 8px 35px 8px 14px;
@@ -49,4 +49,47 @@ iframe { display:block; width:100%; border:none; }
   border-radius: 50%;
   width: 350px;
   height: 350px; 
+}
+
+.link-iframe .top-bar {
+  max-height: 60px;
+  background: #25292C;
+  border-bottom: 1px solid #414f5a;
+  padding: 7px 0;
+  color: #fff;
+}
+
+.link-iframe .top-bar .collapse {
+  display: block !important;
+  height: auto !important;
+  overflow: visible !important;
+  padding-bottom: 0;
+}
+
+.link-iframe .link-controls {
+  padding: 3px 0;
+}
+
+.link-iframe .link-controls a{
+  color: #fff;
+  margin-left: 20px;
+}
+
+.link-iframe .social li {
+  background-color: #FFF;
+  border-radius: 100% 100% 100% 100%;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.6);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.6);
+  display: inline-block;
+  height: 25px;
+  margin-right: 5px;
+  width: 25px;
+  text-align: center;
+  background: #fff;
+  -webkit-transition: background .5s ease-in-out;
+  -moz-transition: background .5s ease-in-out;
+  -o-transition: background .5s ease-in-out;
+  -ms-transition: background .5s ease-in-out;
+  transition: background .5s ease-in-out;
+  padding: 1px;
 }

@@ -9,6 +9,7 @@
   <meta py:replace="select('*')"/>
   <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}" />
   <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css')}" />
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
 
   <script src="${tg.url('/javascript/jquery-2.1.1.min.js')}" />
   <script src="${tg.url('/javascript/bootstrap.min.js')}"></script>
@@ -50,7 +51,7 @@
 
   
   <!-- Flash messages -->
-  <py:with vars="flash=tg.flash_obj.render('flash', use_js=False); link=h.link(request['GET'].get('lid', ''))">
+  <py:with vars="flash=tg.flash_obj.render('flash', use_js=False)">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div py:if="flash" py:replace="Markup(flash)" />

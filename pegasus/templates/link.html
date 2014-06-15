@@ -3,16 +3,30 @@
     xmlns:xi="http://www.w3.org/2001/XInclude">
 
 <xi:include href="master.html" />
+<xi:include href="navbar_link.html" />
 
 <head>
   <title>${page}</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/jquery.sidr.light.css')}" />
 </head>
 
 <body>
-  <div class="row link-iframe">
-    <iframe src="http://www.w3schools.com">
+  <div class="link-iframe" py:with="link=h.link(request['GET'].get('lid', ''))">
+    ${navbarLink()}
+    <iframe src="${link}">
       <p>Your browser does not support iframes.</p>
     </iframe>
   </div>
 </body>
+<div id="sidr">hola</div>
+<script src="${tg.url('/javascript/jquery.sidr.min.js')}"></script>
+<script>
+  $(document).ready(function(){
+    $("#show_menu").sidr({
+      name: 'sidr',
+      side: 'right'
+    });  
+  });
+</script>
 </html>
+
