@@ -34,7 +34,7 @@ class DashboardController(BaseController):
     		links = []
     	else:
     		links = model.Category.categorias_usuario(user.id)
-    	return dict(values=links)
+    	return dict(cats=links)
 
     """@expose('pegasus.templates.logged_index')
     def about(self):
