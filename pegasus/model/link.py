@@ -43,6 +43,12 @@ class Link(DeclarativeBase):
     dislikes = Column(Integer)
 
     flags = Column(Integer)
+
+    is_liked = Column(Boolean, nullable=True)
+
+    is_disliked = Column(Boolean, nullable=True)
+
+    is_flagged = Column(Boolean, nullable=True)
     
     #}
 
