@@ -37,8 +37,6 @@
     <div class="collapse navbar-collapse" id="navbar-content">
       <ul class="nav navbar-nav">
         <li py:if="not request.identity" class="${('', 'active')[value_of('page') == 'index']}"><a href="${tg.url('/')}">Welcome</a></li>
-        <li py:if="not request.identity" class="${('', 'active')[value_of('page') == 'about']}"><a href="${tg.url('/about')}">About</a></li>
-
         <li py:if="request.identity">
           <a href="${tg.url('/link/add')}">Add Link</a>
         </li>
