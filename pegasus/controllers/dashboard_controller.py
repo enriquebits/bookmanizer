@@ -44,22 +44,26 @@ class DashboardController(BaseController):
         log.debug("Recibiendo para results: %s \n", kw)
         results = map(int, kw['tags'].split(','))
         log.debug("Indices: %s\n", results)
-        links = model.Link.links_id(results)
-        log.debug("Links: %s\n", links)
+        links = model.Tag.links_tag_id(results, 1)
+        #links = model.Link.links_id(results, 1)
+        #log.debug("Links: %s\n", tags.tags_links)
         #query = kw.get()
         # do results
         return dict(page='Resultados', links=links, tags=kw['tags'])
 
     @expose('json')
     def search_ajax(self, **kw):
-        import json
-        results = dict()
-        results['urls'] = list()   
+        results = []
+        log.debug("Recibiendo para results: %s \n", kw)
+        results = map(int, kw['tags'].split(','))
+        pagina = int(kw['page'])
+        log.debug("Indices: %s\n", results)
+        links= model.Tag.links_tag_id(results, pagina)
+        #links = model.Link.links_id(results, pagina)
+        #log.debug("Links: %s\n", tags.tags_links)
         #query = kw.get()
         # do results
-        for i in range(0, 16):
-            results['urls'].append("www.xvideos.com")         
-        return json.dumps(results)
+        return dict(page='Resultados', links=links, tags=kw['tags'])
 
     @expose('json')
     def get_tags(self, **kw):
