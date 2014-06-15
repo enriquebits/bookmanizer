@@ -8,6 +8,7 @@ from pegasus import model
 from pegasus.lib.base import BaseController
 from pegasus.lib.misc import forceUser
 from pegasus.controllers.error import ErrorController
+from pegasus.controllers.dashboard_controller import DashboardController
 
 import logging
 log = logging.getLogger(__name__)
@@ -39,6 +40,7 @@ class RootController(BaseController):
     """ TUTORIAL: además deben instanciarse con el nombre desde el cual se quiera acceder en la URL,
     en este caso para acceder a las páginas del controlador SampleController se escribirá en la URL: localhost:XXXX/sample """
     sample = SampleController()
+    dashboard = DashboardController()
 
     def _before(self, *args, **kw):
         tmpl_context.project_name = "example"
@@ -46,6 +48,8 @@ class RootController(BaseController):
     @expose('pegasus.templates.index')
     def index(self):
         """Handle the front-page."""
+        if request.identity:
+            redirect('/dashboard')
         return dict(page='index')
 
     @expose('pegasus.templates.about')
