@@ -51,7 +51,7 @@
   height: 350px; 
 }
 
-<<<<<<< HEAD
+
 .link-iframe .top-bar {
   max-height: 60px;
   background: #25292C;
@@ -94,12 +94,12 @@
   transition: background .5s ease-in-out;
   padding: 1px;
 }
-=======
+
 .results-panel .panel-body{
   height:200px;
   background-size:cover;
   background-repeat: no-repeat;
-  padding: 0px;
+  padding: 0px !important;
 }
 
 .results-panel .panel-body-footer {
@@ -109,10 +109,17 @@
   color: #ffffff;
   background: rgba(0,0,0,0.5);
   padding: 5px;
+  min-height: 40px;
+}
+
+.results-panel .panel-footer {
+  min-height: 40px;
 }
 
 .results-panel .panel-heading {
   height: 55px;
+  color: white;
+  font-weight: bold;
 }
 
 .helper {
@@ -125,4 +132,13 @@
   vertical-align: middle;
   margin-left: 34%; 
 }
->>>>>>> 694130a401b3946e66ed8b62563604696cad5f7b
+
+.fb-share-button { 
+    width: 80px; 
+}
+.fb-share-button span, 
+.fb-share-button iframe {.
+    width: 80px !important;
+    height: 25px !important;
+}
+

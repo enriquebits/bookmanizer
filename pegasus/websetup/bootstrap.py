@@ -36,7 +36,28 @@ def links():
         (2, "http://openlibrary.org/", 4, 2, 0, 0),
         (3, "http://buscaebooks.blogspot.mx/", 4, 2, 0, 0),
         (4, "http://bitelia.com/", 9, 2, 0, 0),
-        (5, "http://www.bignerdranch.com/index", 6, 2, 0, 0)
+        (5, "http://www.bignerdranch.com/index", 6, 2, 0, 0),
+        (6,  "http://www.lifehacker.com", 6, 2, 0, 0),
+        (7, "http://www.android.com", 9, 2, 0, 0),
+        (8, "http://www.apple.com", 6, 2, 0, 0),
+        (9, "http://getbootstrap.com/", 6, 2, 0, 0),
+        (10, "http://www.iflscience.com/", 3, 2, 0, 0),
+        (11, "http://www.wikipedia.org/", 4, 2, 0, 0),
+        (12, "http://www.unam.mx/", 4, 2, 0, 0),
+        (13, "http://www.ipn.mx/", 4, 2, 0, 0),
+        (14, "http://www.fifa.com/", 8, 2, 0, 0),
+        (15, "http://www.nfl.com/", 8, 2, 0, 0),
+        (16, "http://www.art.com", 2, 2, 0, 0),
+        (17, "http://www.devianart.com", 2, 2, 0, 0),
+        (18, "http://www.festivalcannes.com", 2, 2, 0, 0),
+        (19, "http://www.vh1la.com", 2, 2, 0, 0),
+        (20, "http://mlb.mlb.com/", 8, 2, 0, 0),
+        (21, "http://espndeportes.espn.go.com/", 8, 2, 0, 0),
+        (22, "http://books.google.com/", 4, 2, 0, 0),
+        (23, "http://web.mit.edu/", 4, 2, 0, 0),
+        (24, "http://www.edx.org/", 4, 2, 0, 0),
+        (25, "http://www.coursera.org/", 4, 2, 0, 0),
+        (26, "http://www.un.org/es/aboutun/", 5, 2, 0, 0)
     ]
 
     tags_db = model.Tag.get_all()
@@ -49,7 +70,7 @@ def links():
         link.likes = l[3]
         link.dislikes = l[4]
         link.flags = l[5]
-        tags = random.sample(tags_db, 2)
+        tags = random.sample(tags_db, 3)
         link.tags.extend(tags)
         model.DBSession.add(link)
 

@@ -45,7 +45,7 @@ class RootController(BaseController):
     link = LinkController()
 
     def _before(self, *args, **kw):
-        tmpl_context.project_name = "example"
+        tmpl_context.project_name = "Pegasus"
 
     @expose('pegasus.templates.index')
     def index(self):
