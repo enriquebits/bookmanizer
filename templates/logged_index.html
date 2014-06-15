@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <xi:include href="master.html" />
+
+<head>
+  <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/fractionslider.css')}" />
+  <title>Pegasus</title>
+</head>
+
+<body>
+
+<div>
+	<div py:choose="">
+		<div py:when="len(resp) == 0">
+			<div>No has guardado links todavía. Comienza (:</div>
+		</div>
+		<div py:otherwise="">
+			<div py:choose="">
+				<div py:when="op == 1">
+					Todavía no haz hecho ninguna categoría. Organiza mejor tus links creando categorías
+					<py:for each="links in resp">
+						<div>${links.url}</div>
+			    		<div>${links.description}</div>
+			    		<div>${links.created_date}</div>
+		    		</py:for>
+				</div>
+				<div py:when="op == 2">
+					<py:for each="categorias in resp">
+				    	<div>
+				    	${categorias.name}
+				    		<div style="display:none">
+						    	<py:for each="links in categorias.links">
+						    		<div>${links.url}</div>
+						    		<div>${links.description}</div>
+						    		<div>${links.created_date}</div>
+						    	</py:for>
+				    		</div>
+				    	</div>
+		  			</py:for>
+				</div>
+			</div>
+		</div>
+	</div> 
+</div> 
+
+</body>
+
+</html>
