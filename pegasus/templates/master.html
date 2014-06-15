@@ -9,9 +9,11 @@
   <meta py:replace="select('*')"/>
   <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}" />
   <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css')}" />
-
+  <link type="text/css" href="${tg.url('/css/select2.css')}" rel="stylesheet"/>
   <script src="${tg.url('/javascript/jquery-2.1.1.min.js')}" />
   <script src="${tg.url('/javascript/bootstrap.min.js')}"></script>
+  <script src="${tg.url('/javascript/master.js')}"></script>
+  <script src="${tg.url('/javascript/select2.min.js')}"></script>
 </head>
 
 <body py:match="body" py:attrs="select('@*')">
@@ -34,11 +36,15 @@
       <ul class="nav navbar-nav">
         <li py:if="not request.identity" class="${('', 'active')[value_of('page') == 'index']}"><a href="${tg.url('/')}">Welcome</a></li>
         <li py:if="not request.identity" class="${('', 'active')[value_of('page') == 'about']}"><a href="${tg.url('/about')}">About</a></li>
+
         <li py:if="request.identity">
-          <input type="text" class="form-control" id="search_box" style="width: 300%;"/>
+          <input type="text" id="query" style="margin-top:12px;width:300%;" />
         </li>
 
+
       </ul>
+      
+      <button py:if="request.identity" type="button" class="btn btn-default" style="margin-left: 20%; margin-top:9px;" onClick="doSearch()">Search</button>
 
       <ul py:if="tg.auth_stack_enabled" class="nav navbar-nav navbar-right">
         <li py:if="not request.identity"><a href="${tg.url('/login')}">Login</a></li>
