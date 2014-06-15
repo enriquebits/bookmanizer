@@ -57,3 +57,12 @@ class LinkController(BaseController):
         model.DBSession.flush()
         flash(_('Your link has been added!!'))
         redirect('/dashboard')
+
+    @expose('json')
+    def like(self, **kw):
+        link_id = kw.get('link_id', None)
+        link = model.Link.get_by_id(link_id)
+        if link:
+            link.likes += 1
+            link.is_liked = True
+            model.DBSession.add(like)

@@ -8,25 +8,29 @@
 <head>
   <title>${page}</title>
   <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/jquery.sidr.light.css')}" />
+  <style>
+    .link-iframe html, 
+    .link-iframe body, 
+     div, 
+    .link-iframe iframe { 
+      margin:0; 
+      padding:0; 
+      height:100%; 
+    }
+    .link-iframe iframe { display:block; width:100%; border:none; }
+  </style>
 </head>
 
 <body>
   <div class="link-iframe" py:with="link=h.link(request['GET'].get('lid', ''))">
-    ${navbarLink()}
-    <iframe src="${link}">
+    ${controlsLink()}
+    <iframe id="glu" src="${link}" width="100%" height="100%">
       <p>Your browser does not support iframes.</p>
     </iframe>
   </div>
 </body>
 <div id="sidr">hola</div>
 <script src="${tg.url('/javascript/jquery.sidr.min.js')}"></script>
-<script>
-  $(document).ready(function(){
-    $("#show_menu").sidr({
-      name: 'sidr',
-      side: 'right'
-    });  
-  });
-</script>
+<script src="${tg.url('/javascript/link.js')}"></script>
 </html>
 
