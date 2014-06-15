@@ -4,17 +4,21 @@
 from tg import expose, flash, require, url, lurl, request, redirect, tmpl_context
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 
+from pegasus import model
 from pegasus.lib.base import BaseController
 from pegasus.lib.misc import forceUser
 from pegasus.controllers.error import ErrorController
 from pegasus.controllers.dashboard_controller import DashboardController
+
+import logging
+log = logging.getLogger(__name__)
+
 
 """ TUTORIAL: TODOS los controladores nuevos tienen que importarse aquí con la siguiente sintaxis:
     from direccion.del.archivo_controlador import NombreDeLaClaseDelControlador: """
 from pegasus.controllers.sample_controller import SampleController
 
 __all__ = ['RootController']
-
 
 class RootController(BaseController):
     """ 
@@ -99,16 +103,15 @@ class RootController(BaseController):
         """
         User register
         """
+        log.debug("Recibiendo de registro %s", kw)
         if request.identity:
             redirect('/')
 
-        email_address = kw.get('email_address', None)
-        user = model.User.by_email_address(email_address)
-
         """ Adding new user """
         user = model.User()
+        user.email_address = kw.get('email', None)
         user.password = kw.get('password', None)
-        user.user_name = kw.get('user_name', None)
+        user.user_name = kw.get('username', None)
         model.DBSession.add(user)
 
         # Persisting
@@ -116,15 +119,15 @@ class RootController(BaseController):
         try:
             model.DBSession.flush()
             forceUser(user.user_name)
-            # flash(_(u'Bienvenido %s, su cuenta ha sido confirmada con éxito' % user.user_name), 'alert alert-success')
+            flash(_(u'Bienvenido %s, su cuenta ha sido creada con éxito' % user.user_name), 'alert alert-success')
             redirect('/')
         except IntegrityError as e:
             log.debug('Error:', e)
             model.DBSession.rollback()
             if e.orig[0] == 1062: 
                 # User register already exits
-                redirect('/login')
                 flash(_('Parece que ya tienes cuenta'))
+                redirect('/login')
             else:
                 raise  
 
