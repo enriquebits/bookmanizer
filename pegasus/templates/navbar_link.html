@@ -14,10 +14,12 @@
                  </div>
                  <div class="pull-right">
                     <ul class="social pull-left">
-                       <li class="facebook"><a style="cursor: pointer;"><i class="fa fa-facebook"></i></a></li>
-                       <li class="twitter"><a style="cursor: pointer;"><i class="fa fa-twitter"></i></a></li>
-                       <li class="linkedin"><a style="cursor: pointer;"><i class="fa fa-linkedin"></i></a></li>
-                       <li class="rss"><a style="cursor: pointer;" href="sidr" id="show_comments"><i class="fa fa-rss"></i></a></li>
+                    	<div style="float:left;" class="fb-share-button" data-href="${link.url}" data-type="button"></div>
+                       <!-- <li class="facebook"><a style="cursor: pointer;" class="fb-share-button" data-href="${link.url}" data-type="button"><i class="fa fa-facebook"></i></a></li> -->
+                       <!-- <li class="twitter"><a style="cursor: pointer;"><i class="fa fa-twitter"></i></a></li> -->
+                       <div style="margin-top:0px;margin-left:15px;float:left;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="${link.url}" data-lang="en">Tweet</a></div>
+                       <!-- <li class="linkedin"><a style="cursor: pointer;"><i class="fa fa-linkedin"></i></a></li> -->
+                       <a href="#" id="show_comments"><i id="flag" class="fa fa-comment-o" style="font-size: 30px; color: white; margin-top: -5px; margin-left: 10px;"></i></a>
                     </ul>
                  </div>
               </div>
