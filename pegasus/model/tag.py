@@ -37,7 +37,7 @@ class Tag(DeclarativeBase):
    	
    	@property
    	def to_json(self):
-   		return {self.id, self.name}
+   		return {'id': self.id, 'name': self.name}
     
     @classmethod
     def get_by_id(cls, id):

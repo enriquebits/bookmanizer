@@ -16,9 +16,10 @@ $( document ).ready(function() {
 	$("#query").select2({
 		placeholder: "Choose a tag",
 		minimumInputLength: 3,
+		multiple: true,
 		ajax: { 
 	        url: "/dashboard/get_tags",
-	        dataType: 'jsonp',
+	        dataType: 'json',
 	        data: function (term, page) {
 	            return {
 	                q: term, // search term
@@ -27,7 +28,9 @@ $( document ).ready(function() {
 	        },
 	        results: function (data, page) { // parse the results into the format expected by Select2.
 	            // since we are using custom formatting functions we do not need to alter remote JSON data
-	            return {results: data.movies};
+	            console.debug("data: "+data)
+	            console.debug("page: "+page)
+	            return data;
 	        }
 	    },
 	});

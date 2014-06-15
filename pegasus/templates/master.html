@@ -38,13 +38,13 @@
         <li py:if="not request.identity" class="${('', 'active')[value_of('page') == 'about']}"><a href="${tg.url('/about')}">About</a></li>
 
         <li py:if="request.identity">
-          <input type="text" id="query" style="margin-top:12px;width:300%;" />
+          <input multiple="multiple" type="text" id="query" style="margin-top:12px;width:100%;" />
         </li>
 
 
       </ul>
       
-      <button py:if="request.identity" type="button" class="btn btn-default" style="margin-left: 20%; margin-top:9px;" onClick="doSearch()">Search</button>
+      <button py:if="request.identity" type="button" class="btn btn-default" style="margin-top:12px;" onClick="doSearch()">Search</button>
 
       <ul py:if="tg.auth_stack_enabled" class="nav navbar-nav navbar-right">
         <li py:if="not request.identity"><a href="${tg.url('/login')}">Login</a></li>
