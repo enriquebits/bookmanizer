@@ -9,6 +9,8 @@
   <meta py:replace="select('*')"/>
   <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}" />
   <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css')}" />
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+
   <link type="text/css" href="${tg.url('/css/select2.css')}" rel="stylesheet"/>
   <script src="${tg.url('/javascript/jquery-2.1.1.min.js')}" />
   <script src="${tg.url('/javascript/bootstrap.min.js')}"></script>
@@ -38,12 +40,20 @@
         <li py:if="not request.identity" class="${('', 'active')[value_of('page') == 'about']}"><a href="${tg.url('/about')}">About</a></li>
 
         <li py:if="request.identity">
-          <input multiple="multiple" type="text" id="query" style="margin-top:12px;" />
+          <a href="${tg.url('/link/add')}">Add Link</a>
         </li>
+
+        <li py:if="request.identity">
+          <input multiple="multiple" type="text" id="query" style="margin-top:12px;min-width: 200px;" />
+        </li>
+
+        <li py:if="request.identity">
+          <button type="button" class="btn btn-default" style="margin-top:12px;" onClick="doSearch()">Search</button>
+        </li>
+
       </ul>
       
 
-      <button py:if="request.identity" type="button" class="btn btn-default" style="margin-top:12px;" onClick="doSearch()">Search</button>
 
       <form py:if="request.identity" id="search_form" action="${tg.url('/dashboard/search')} ">
         <input type="hidden" name="tags" id="tags"/>
@@ -59,7 +69,7 @@
 
   
   <!-- Flash messages -->
-  <py:with vars="flash=tg.flash_obj.render('flash', use_js=False); link=h.link(request['GET'].get('lid', ''))">
+  <py:with vars="flash=tg.flash_obj.render('flash', use_js=False)">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div py:if="flash" py:replace="Markup(flash)" />
@@ -73,9 +83,32 @@
 
 
   <!-- Footer -->
-  <footer class="footer hidden-xs hidden-sm">
+  <footer py:if="request.identity" class="footer hidden-xs hidden-sm">
     <a class="pull-right" href="http://www.turbogears.org"><img style="vertical-align:middle;" src="${tg.url('/img/under_the_hood_blue.png')}" alt="TurboGears 2" /></a>
     <p>Copyright &copy; ${getattr(tmpl_context, 'project_name', 'TurboGears2')} ${h.current_year()}</p>
+  </footer>
+
+  <footer py:if="not request.identity" >
+    <div class="row" style="background: #000000;">
+      <br/>
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <div class="circle" style="background-color: #e11d1d; margin-left: 50px;">
+            <span class="helper">
+            </span>
+              <img class="crown" src="http://www.angelhack.com/wp-content/uploads/2014/06/white-crown2.png" />              
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xs-12">
+          <img style="width: 70%; height: 70%;" src="/img/angel_hack.png" />
+        </div>
+
+        
+      </div>
+
+      <br/><br/>
+    </div>
   </footer>
 
 </body>
