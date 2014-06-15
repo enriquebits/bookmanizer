@@ -11,6 +11,8 @@ from tg import redirect, validate, flash, request
 # project specific imports
 from pegasus.lib.base import BaseController
 
+from pegasus import model
+
 
 from pegasus import model
 """ con DBSession se puede acceder a las tablas para hacer consultas, ediciones, altas, bajas, etc """
@@ -28,12 +30,11 @@ class DashboardController(BaseController):
     @expose('pegasus.templates.logged_index')
     def index(self):
         user = request.identity['user']
-    	responde = ""
-    	if len(user.interests) == 0:
-    		responde = 'No hay nada'
+    	if len(user.categories) == 0:
+    		links = []
     	else:
-    		responde = 'Si tiene categorias'
-    	return dict(values=responde)
+    		links = model.Category.categorias_usuario(user.id)
+    	return dict(values=links)
 
     """@expose('pegasus.templates.logged_index')
     def about(self):

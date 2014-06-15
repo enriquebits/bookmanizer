@@ -49,7 +49,13 @@ class Category(DeclarativeBase):
     def get_all(cls):
         return DBSession.query(cls).order_by(cls.name).all()
 
+    @classmethod
+    def categorias_usuario(cls, idusu):
+        return DBSession.query(cls).filter(cls.user_id==idusu).all()
+
     # }
+
+
 
 
 

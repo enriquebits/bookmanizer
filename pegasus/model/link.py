@@ -70,14 +70,14 @@ class Link(DeclarativeBase):
         return DBSession.query(cls).filter(cls.id==id).first()
 
     @classmethod
-    def get_all(cls):
+    def get_all(cls, category_id=None):
+        if category_id:
+            return DBSession.query(cls).filter(cls.category_id==category_id)\
+                        .order_by(cls.created_date).all()
         return DBSession.query(cls).order_by(cls.url).all()
 
     # }
 
-    @classmethod
-    def links_usuario(cls, id):
-            return DBSession.query(cls).filter(cls.id==id).all()
 
 
         
