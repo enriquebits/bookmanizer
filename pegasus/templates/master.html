@@ -40,11 +40,13 @@
         <li py:if="request.identity">
           <input multiple="multiple" type="text" id="query" style="margin-top:12px;width:100%;" />
         </li>
-
-
       </ul>
       
       <button py:if="request.identity" type="button" class="btn btn-default" style="margin-top:12px;" onClick="doSearch()">Search</button>
+
+      <form py:if="request.identity" id="search_form" action="${tg.url('/dashboard/search')} ">
+        <input type="hidden" name="tags" id="tags"/>
+      </form>
 
       <ul py:if="tg.auth_stack_enabled" class="nav navbar-nav navbar-right">
         <li py:if="not request.identity"><a href="${tg.url('/login')}">Login</a></li>

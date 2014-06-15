@@ -8,7 +8,8 @@ function updateCategory(link) {
 
 function doSearch () {
 	var tags = $("#query").select2("val");
-	window.location.replace("www.localhost:8080/dashboard/search?query="+tags);
+	$("#tags").val(tags);
+	$("#search_form").submit();
 }
 
 $( document ).ready(function() {
