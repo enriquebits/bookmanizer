@@ -48,7 +48,7 @@ class Link(DeclarativeBase):
 
     # Relations { 
 
-    tags = relationship('Tag', secondary=link_tag_table)
+    tags = relationship('Tag', secondary=link_tag_table, backref='tags_links')
     category = relationship('Category', backref='links')
 
     #}
@@ -81,9 +81,13 @@ class Link(DeclarativeBase):
         return DBSession.query(cls).order_by(cls.url).all()
 
     @classmethod
-    def links_id(cls, links=None):
-        log.debug("Recibe: %s", links)
-        return DBSession.query(cls).filter(cls.id.in_(links)).limit(16).all()
+    def links_id(cls, tags=None, pag=None):
+        log.debug("Recibe: %s\n", tags)
+        log.debug("Numero de registros: %s\n", pag)
+        if pag==1:
+            return DBSession.query(cls).join("tags_links").filter(Tag.id.in_(tags)).offset(0).limit(16).all()
+        else:
+            return DBSession.query(cls).join("tags_links").filter(Tag.id.in_(tags)).offset(16*pag).limit(32*pag).all()
 
     # }
 
