@@ -30,7 +30,13 @@ class DashboardController(BaseController):
     
     @expose('pegasus.templates.logged_index')
     def index(self):
-        return dict(page='Index de SampleController')
+    	user = request.identity['user']
+    	if len(user.categories) == 0:
+    		links = model.Link.get_all(None)
+    		return dict(resp=links, op=1)
+    	else:
+    		links = model.Category.categorias_usuario(user.id)
+        	return dict(resp=links, op=2)
 
     @expose('pegasus.templates.search_results')
     def search(self, **kw):
@@ -63,20 +69,3 @@ class DashboardController(BaseController):
         for tag in model.Tag.get_tags_by_name(query):
             results.append( tag.to_json )
         return json.dumps(results)
-
-        """user = request.identity['user']
-    	if len(user.categories) == 0:
-    		links = []
-    	else:
-    		links = model.Category.categorias_usuario(user.id)
-    	return dict(cats=links)"""
-
-    """@expose('pegasus.templates.logged_index')
-    def about(self):
-    	user = request.identity['user']
-    	responde = ""
-    	if len(user.categories) == 0:
-    		responde = 'No hay nada'
-    	else:
-    		responde = 'Si tiene categorias'
-    	return dict(page='Resultado', values=responde)"""
