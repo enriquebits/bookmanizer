@@ -64,8 +64,9 @@ class DashboardController(BaseController):
 
         import json
         results = dict()
-        results['tags'] = list()   
+        results['results'] = list()   
         # do results
         for tag in model.Tag.get_tags_by_name(query):
-            results.append( tag.to_json )
+            results['results'].append( {'id': tag.id, 'text': tag.name} )
+        log.debug("TAG: %s \n", results)
         return json.dumps(results)
