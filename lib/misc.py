@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-""" Misc tools library for Autogenio """
+""" Misc tools library for Pegasus """
 import tg
 import logging
+from pegasus import model
 log = logging.getLogger(__name__)
     
 def getUser(request):
@@ -10,7 +11,6 @@ def getUser(request):
     @param session request
     @return user or None
     """
-    from autogenio import model
     if request.identity:
         identity = request.environ.get('repoze.who.identity')
         #log.debug("identity: %s", identity['repoze.who.userid'])
