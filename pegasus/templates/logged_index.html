@@ -12,6 +12,25 @@
 
 <body>
 
+
+<script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '{757403827645435}',
+        xfbml      : true,
+        version    : 'v2.0'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
 <div>
 	<div py:choose="">
 		<div py:when="len(resp) == 0">
@@ -23,15 +42,17 @@
 		<div class="panel-group" id="accordion" py:otherwise="">
 			<py:for each="categorias in resp">
 		    	<div class="panel panel-default">
-			    	<div class="panel-heading">
-			    		<h4 class="panel-title">
+			    	<div class="panel-heading" style="min-height:70px; background:#f78f20;">
+			    		<h3 style="font-size:50px;" class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion" href="${'#collapse'+str(categorias.id)}">
 			    				${categorias.name}
 			    			</a>
-			    		</h4>
+			    		</h3>
 			    	</div>
-		    		<div id="${'collapse'+str(categorias.id)}" class="panel-collapse collapse">
-		    			<div class="panel-body">
+			    	<py:choose test="categorias.id">
+			    		<py:when test="4">
+			    			<div id="${'collapse'+str(categorias.id)}" class="panel-collapse collapse in">
+			    			<div class="panel-body">
 					    	<py:for each="link in categorias.links">
 					    		<div class="col-md-3">
 						          <div class="panel panel-default results-panel" onClick="goToPage(this)">
@@ -53,6 +74,33 @@
 					    	</py:for>
 				    	</div>
 		    		</div>
+			    		</py:when>
+			    		<py:otherwise>
+			    			<div id="${'collapse'+str(categorias.id)}" class="panel-collapse collapse">
+			    			<div class="panel-body">
+					    	<py:for each="link in categorias.links">
+					    		<div class="col-md-3">
+						          <div class="panel panel-default results-panel" onClick="goToPage(this)">
+						            <div class="panel-heading">
+						              <h3 id="title" class="panel-title">${link.url}</h3>
+						            </div>
+						            <div class="panel-body" >
+						              <div id="description" class="panel-body-footer"/>
+						            </div>
+						            <div class="panel-footer">
+						              <div style="float:left;" class="fb-share-button" data-href="${link.url}" data-type="button"></div>
+						              <div style="margin-top:0px;margin-left:15px;float:left;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="${link.url}" data-lang="en">Tweet</a></div>              
+						            </div>
+						            <form id="showPage" method="post" action="${tg.url('/link', params=dict(lid=link.id) )}">
+						              <input type="hidden" name="lid" id="url" value="${link.id}"/>
+						            </form>
+						          </div>
+						        </div>
+					    	</py:for>
+				    	</div>
+		    		</div>
+			    		</py:otherwise>
+			    	</py:choose>
 		    	</div>
 		    </py:for>
 		</div>
@@ -62,5 +110,6 @@
 </body>
 
 <script src="${tg.url('/javascript/search_results.js')}"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 </html>
