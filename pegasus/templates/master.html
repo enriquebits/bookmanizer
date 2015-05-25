@@ -29,8 +29,8 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="${tg.url('/')}">
-        <img src="${tg.url('/img/turbogears_logo.png')}" height="20" alt="TurboGears 2"/>
-        ${getattr(tmpl_context, 'project_name', 'Pegasus')}
+        <i class="fa fa-bookmark"></i>
+        ${getattr(tmpl_context, 'project_name', 'Bookmanizer')}
       </a>
     </div>
 
@@ -83,7 +83,7 @@
   <!-- Footer -->
   <footer py:if="request.identity" class="footer hidden-xs hidden-sm">
     <!-- <a class="pull-right" href="http://www.turbogears.org"><img style="vertical-align:middle;" src="${tg.url('/img/under_the_hood_blue.png')}" alt="TurboGears 2" /></a> -->
-    <p>Copyright &copy; ${getattr(tmpl_context, 'project_name', 'Pegasus')} ${h.current_year()}</p>
+    <p>Copyright &copy; ${getattr(tmpl_context, 'project_name', 'Bookmanizer')} ${h.current_year()}</p>
   </footer>
 
   <footer py:if="not request.identity and not page == 'login' " >

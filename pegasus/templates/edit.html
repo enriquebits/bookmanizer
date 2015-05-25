@@ -12,24 +12,30 @@
 
 <body>
 
-${page}
-<div>Nombre de usuario: ${usuario.user_name}</div>
 
-<div>Email: ${usuario.email_address}</div>
+<div class="container">
+	<p class="lead"><b>Nombre de usuario:</b> ${usuario.user_name}</p>
 
-<div>Nombre: ${usuario.display_name}</div>
+	<p class="lead"><b>Email:</b> ${usuario.email_address}</p>
 
-<form action="${tg.url('cambia_pass')}">
-	<div>Contraseña anterior: <input class="form-control" type="password" name="old_pass"/></div>
-	<div>Contraseña nueva: <input class="form-control" type="password" name="new_pass"/></div>
-	<input type="submit"/>
-</form>
+	<p class="lead"><b>Nombre:</b> ${usuario.display_name}</p>
 
-<form action="${tg.url('cambia_nombre')}">
-	<div>Nombre: <input class="form-control" type="text" name="nombre"/></div>
-	<div>Apellido: <input class="form-control" type="text" name="apellido"/></div>
-	<input type="submit"/>
-</form>
+	<div>
+	<form action="${tg.url('cambia_pass')}">
+		<p class="lead">Contraseña anterior: <input class="form-control" type="password" name="old_pass"/></p>
+		<p class="lead">Contraseña nueva: <input class="form-control" type="password" name="new_pass"/></p>
+		<p class="lead"><input class="btn btn-lg btn-warning" type="submit" value="Cambia tu contraseña"/></p>
+	</form>
+	</div>
+
+	<div>
+	<form action="${tg.url('cambia_nombre')}">
+		<p class="lead">Nombre: <input class="form-control" type="text" name="nombre"/></p>
+		<p class="lead">Apellido: <input class="form-control" type="text" name="apellido"/></p>
+		<p class="lead"><input class="btn btn-lg btn-warning" type="submit" value="Cambia tu nombre"/></p>
+	</form>
+	</div>
+</div>
 
 </body>
 

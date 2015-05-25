@@ -47,7 +47,7 @@ class RootController(BaseController):
     admin = AdminController()
 
     def _before(self, *args, **kw):
-        tmpl_context.project_name = "Pegasus"
+        tmpl_context.project_name = "Bookmanizer"
 
     @expose('pegasus.templates.index')
     def index(self):

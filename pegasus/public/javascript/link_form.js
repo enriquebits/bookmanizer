@@ -19,6 +19,7 @@ $( document ).ready(function() {
 		minimumInputLength: 3,
 		multiple: true,
 		tags: true,
+		width: 'resolve',
 		tokenSeparators: [",", " "],
 		createSearchChoice: function(term, data) {
 		  if ($(data).filter(function() {
