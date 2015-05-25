@@ -49,7 +49,7 @@ def links():
         (15, "http://www.nfl.com/", 8, 2, 0, 0),
         (16, "http://www.art.com", 2, 2, 0, 0),
         (17, "http://www.devianart.com", 2, 2, 0, 0),
-        (18, "http://www.festival-cannes.com", 2, 2, 0, 0),
+        (18, "http://www.festivalcannes.com", 2, 2, 0, 0),
         (19, "http://www.vh1la.com", 2, 2, 0, 0),
         (20, "http://mlb.mlb.com/", 8, 2, 0, 0),
         (21, "http://espndeportes.espn.go.com/", 8, 2, 0, 0),

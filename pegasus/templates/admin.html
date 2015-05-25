@@ -12,17 +12,13 @@
 
 <body>
 
-<div class="container">
-	<p class="lead"><b>Nombre de usuario:</b> ${usuario.user_name}</p>
+<div>Nombre de usuario: ${usuario.user_name}</div>
 
+<div>Email: ${usuario.email_address}</div>
 
-	<p class="lead"><b>Email:</b> ${usuario.email_address}</p>
+<div>Nombre: ${usuario.display_name}</div>
 
-	<p class="lead"><b>Nombre:</b> ${usuario.display_name}</p>
-
-	<a class="btn btn-lg btn-success" href="${tg.url('admin/edit')}"> Editar los datos </a>
-
-</div>
+<a class="btn" href="${tg.url('admin/edit')}"> Editar los datos </a>
 
 </body>
 
